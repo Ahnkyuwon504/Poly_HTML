@@ -1,0 +1,145 @@
+<!-- 
+    연습(오후).
+    Visual Studio Code v1.56.0
+    21.5.13. 
+    A반 kopo20 안규원
+ -->
+ <html>
+  <head>
+    <title>js EX02</title>
+    <script src="js-external.js"></script>
+    <style>
+      .div_margin {
+        margin: 20px;
+      }
+
+      .onmouseover {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+
+  <body onload="alert('로드됨')">
+    <script>
+      function myConfirm() {
+        var result = confirm('ok?') 
+        console.log(result);
+
+        if (result === true) {
+          alert("좋으면 꺼져");
+          window.open("./HW01.html")
+        } else {
+          alert("싫으면 좋아");
+        }
+      }
+
+      function promptTest() {
+        let text = prompt("당신의 성별은?");
+        alert("당신의 성별은 " + text + "이네요");
+      }
+      
+      function welcomeName() {
+        var name = prompt("이름을 입력해주세요.");
+
+        
+        while (name != '안규원') {
+          name = prompt("제대로 다시 천천히 입력해주세요.");
+          console.log(name);
+        }
+        alert("안규원님 안녕하세요.");
+      }
+
+
+      function getNumber() {
+        var number = prompt("숫자를 입력해주세요.");
+        var step;
+
+        // isNaN은 number이면 false를 반환.. number 아니면 true를 반환..
+        while (isNaN(number) === true) {
+          number = prompt("반드시 숫자를 입력해주세요");
+          
+          if (isNaN(number) === false) {
+            while (number < 1 || number > 100) {
+            number = prompt("1과 100 사이의 숫자를 입력해주세요.");
+            }
+          }
+        }
+        console.log(typeof number);
+        // 조건을 통과 했으면... 로그 찍어주고.. 
+        for (step = 1; step < 101; step++) {
+          console.log(step)
+        }
+        // 완료...
+        alert("완료되었습니다.");
+      }
+
+      function getName() {
+        let name = document.getElementById('name');
+        console.log(name.value);
+
+      }
+
+      function putHtml() {
+        let html = document.getElementById('html');
+
+        let testDiv = document.getElementById('text');
+        testDiv.innerHTML = html.value;
+      }
+    </script>
+
+    <center>  
+      <div id="text">
+
+      </div> 
+      <div class=div_margin>
+        <input type="button" value="클릭!!" onclick="myFun1()">
+        <input type="button" value="클릭!!" 
+        onclick="javascript:alert(myFun2('안규원', 27))">
+        <input type="button" value="confirm" onclick="confirm('ok?')">
+        <input type="button" value="myconfirm" onclick="myConfirm()">
+        <input type="button" value="myprompt" onclick="promptTest()">
+      </div>
+
+      <div class=div_margin>
+        <input type="button" value="welcome_name" onclick="welcomeName()">
+      </div>
+
+      <div class=div_margin>
+        <input type="button" value="getnumber" onclick="getNumber()">
+      </div>
+
+      
+      <!-- <script>
+        document.write('<h1>제목입니다.</h1>')
+      </script> -->
+
+      <input type="text" id="name" placeholder="이름">
+      <input type="button" value="id값 가져오기"
+       onclick="getName()" >
+
+      <input type="text" id="html" placeholder="html">
+      <input type="button" value="html 코드 입력" onclick="putHtml()">
+
+      <br><br>
+      <select name="" id="" onchange="alert(this.value)">
+        <option value="red">빨강</option>
+        <option value="green">초록</option>
+        <option value="blue">파랑</option>
+      </select>
+
+      <div class="onmouseover"
+       onmouseover="alert('마우스 들어옴.')"
+       onmouseout="alert('마우스 나감.')"
+       onmousemove="console.log('마우스 움직임..!')">
+        onmouseover영역임.
+
+      </div>
+
+
+
+
+    </center>
+  </body>
+</html>

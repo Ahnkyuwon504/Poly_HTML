@@ -1,0 +1,96 @@
+<!-- 
+    HW02.
+    Visual Studio Code v1.56.0
+    21.5.13. 
+    A반 kopo20 안규원
+ -->
+ <html>
+  <head>
+    <title>HW02</title>
+    <style>
+      .div_margin {
+        margin: 20px;
+      }
+
+      .onmouseover {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function getText() {
+        let outputText1 = document.getElementById('text1');
+        let outputText2 = document.getElementById('text2');
+
+        let text = prompt("텍스트를 입력해 주세요.");
+
+        while (!text) {
+          text = prompt("다시 텍스트를 정확히 입력해 주세요.");
+        }
+
+        var output1 = "<h1>" + text + "</h1>";
+        outputText1.innerHTML = output1; // 여기서 나오고...
+
+        var strRed = '';
+        var textColor = '';
+        strRed += '<input type';
+        strRed += '="button" value=';
+        strRed += '"빨강" ';
+        strRed += 'onclick=';
+        strRed += '"alert(\'빨강색으로 변경됩니다.\'); changeColor(1);">';
+        
+        strRed += '<input type';
+        strRed += '="button" value=';
+        strRed += '"파랑" ';
+        strRed += 'onclick=';
+        strRed += '"alert(\'파랑색으로 변경됩니다.\'); changeColor(2);">';
+        
+        strRed += '<input type';
+        strRed += '="button" value=';
+        strRed += '"초록" ';
+        strRed += 'onclick=';
+        strRed += '"alert(\'초록색으로 변경됩니다.\'); changeColor(3);">';
+        
+        outputText2.innerHTML = strRed;
+      }
+
+      function changeColor(number) {
+        let text = document.getElementById('text1');
+        var wanttoChangeColorText = text.innerText;
+        var str = "";
+
+        if (number == 1) {
+          str += '<h1 style="color: red;">';
+          str += wanttoChangeColorText;
+          str += '</h1>';
+        } else if (number == 2) {
+          str += '<h1 style="color: blue;">';
+          str += wanttoChangeColorText;
+          str += '</h1>';
+        } else if (number == 3) {
+          str += '<h1 style="color: green;">';
+          str += wanttoChangeColorText;
+          str += '</h1>';
+        }
+
+        text.innerHTML = str;
+      }
+    </script>
+
+   
+
+    <center>  
+      <input type="button" value="html 코드 입력" onclick="getText()">
+      <div id="text1">
+
+      </div>
+      <div id="text2">
+
+      </div>
+    </center>
+  </body>
+</html>

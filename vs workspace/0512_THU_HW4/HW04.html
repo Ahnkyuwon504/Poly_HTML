@@ -1,0 +1,90 @@
+<!-- 
+    HW04.
+    Visual Studio Code v1.56.0
+    21.5.13. 
+    A반 kopo20 안규원
+ -->
+ <html>
+  <head>
+    <title>HW04</title>
+    <style>
+      .grayBGwhiteText {
+        background-color: rgb(80, 77, 77);
+        color: white;
+      }
+      .whiteBGblackText {
+        background-color: white;
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        color: black;
+      }
+      .left {
+        float: left;
+      }
+    </style>
+    <script>
+      function grayToblack(number) {
+        var str = "";
+
+        if (number == 1) {
+          let button = document.getElementById('htmlid');
+          str += '<input id="html" class="whiteBGblackText" type="button" ';
+          str += 'value="html" onmouseover="blackTogray(1)">';
+          button.innerHTML = str;
+          blackTogray(2);
+          blackTogray(3);
+        } else if (number == 2) {
+          let button = document.getElementById('cssid');
+          str += '<input id="css" class="whiteBGblackText" type="button" ';
+          str += 'value="css" onmouseover="blackTogray(2)">';
+          button.innerHTML = str;
+          blackTogray(1);
+          blackTogray(3);
+        } else if (number == 3) {
+          let button = document.getElementById('javascriptid');
+          str += '<input id="javascript" class="whiteBGblackText" type="button" ';
+          str += 'value="javascript" onmouseover="blackTogray(3)">';
+          button.innerHTML = str;
+          blackTogray(1);
+          blackTogray(2);
+        }
+      }
+
+      function blackTogray(number) {
+        var str = "";
+
+        if (number == 1) {
+          let button = document.getElementById('htmlid');
+          str += '<input id="html" class="grayBGwhiteText" type="button" ';
+          str += 'value="html" onmouseover="grayToblack(1)">';
+          button.innerHTML = str;
+        } else if (number == 2) {
+          let button = document.getElementById('cssid');
+          str += '<input id="css" class="grayBGwhiteText" type="button" ';
+          str += 'value="css" onmouseover="grayToblack(2)">';
+          button.innerHTML = str;
+        } else if (number == 3) {
+          let button = document.getElementById('javascriptid');
+          str += '<input id="javascript" class="grayBGwhiteText" type="button" ';
+          str += 'value="javascript" onmouseover="grayToblack(3)">';
+          button.innerHTML = str;
+        }
+      }
+    </script>
+  </head>
+  
+
+  
+  <body align="center">
+    <div id="htmlid" class="left">
+      <input id="html" class="grayBGwhiteText" type="button" value="html" onmouseover="grayToblack(1)">
+    </div>
+    <div id="cssid" class="left">
+      <input id="css" class="grayBGwhiteText" type="button" value="css" onmouseover="grayToblack(2)">
+    </div>
+    <div id="javascriptid" class="left">
+      <input id="javascript" class="grayBGwhiteText" type="button" value="javascript" onmouseover="grayToblack(3)">
+    </div>
+  </body>
+</html>

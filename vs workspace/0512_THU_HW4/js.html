@@ -8,21 +8,65 @@
   <head>
     <title>js EX01</title>
     <script src="js-external.js"></script>
+
   </head>
 
   <body>
     <script>
+      // 변수
       var i = 0;
-      console.log(i);
+      console.log(typeof i);
 
-      i = 1;
-      console.log(i);
+      // int, double, float 없이 모두 number
+      i = 1.5;
+      console.log(typeof i);
 
+      // string 
       i = "안녕";
-      console.log(i);
+      console.log(typeof i);
+
+       // 작은따옴표 해도 string
+       i = '안녕';
+      console.log(typeof i);
+
+      let j = 0;
+      j = 1;
+      console.log(j);
+
+      // jss의 const는 상수로 값을 바꿀 수 없음.
+      // const k = 0;
+      // k = 1;
+      // console.log(k);
+
+      function myConfirm() {
+        var result = confirm('ok?') 
+        console.log(result);
+
+        if (result === true) {
+          alert("좋으면 꺼져");
+          window.open("./HW01.html")
+        }
+        if (result === false) {
+          alert("싫으면 좋아");
+        }
+      }
+
+      function promptTest() {
+        let text = prompt("당신의 성별은?");
+        alert("당신의 성별은 " + text + "이네요");
+      }
+
+
+
     </script>
     <center>   
-      <input type="button" value="클릭!!" onclick="javascript:myFun1()">
+      <input type="button" value="클릭!!" onclick="myFun1()">
+      <input type="button" value="클릭!!" 
+      onclick="javascript:alert(myFun2('안규원', 27))">
+
+      <input type="button" value="confirm" onclick="window.confirm('ok?')">
+      <input type="button" value="myconfirm" onclick="myConfirm()">
+      <input type="button" value="myprompt" onclick="promptTest()">
     </center>
   </body>
 </html>
