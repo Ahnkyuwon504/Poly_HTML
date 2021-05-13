@@ -1,0 +1,116 @@
+
+
+<!-- 
+    실습 4.
+    Visual Studio Code v1.56.0
+    21.5.12. 
+    A반 kopo20 안규원
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ -->
+ <html>
+  <head>
+    <title>HW04</title>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <style>
+      .a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .div_class_backgroundimg {
+        height: 100%;
+        background-image: url("data:image/jpeg;base64,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");
+        z-index: -1;
+      }
+
+      .div_class_Menu {
+        margin-left: 0px;
+        margin-top: 0px;
+        height: 7%;
+        background-color: black;
+      }
+
+      .div_class_icon {
+        font-size: 30px;
+        color: gold;
+        float: left;
+      }
+
+      .div_class_icon2 {
+        font-size: 30px;
+        color:white;
+        float: left;
+      }
+
+      .div_class_Menu_Right {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        line-height: 100%;
+        float: right;
+        margin: 15px;
+      }
+      
+      .Main {
+        position:absolute;
+        left:900px;
+        top:45%;
+        width: 350px;
+        height: 100px;
+        color: white;
+      }
+
+      .Link {
+        position:absolute;
+        left:950px;
+        top:50%;
+        width: 350px;
+        height: 100px;
+        color: white;
+      }
+
+      .red {
+        color: pink;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="div_class_backgroundimg">
+      <div class="div_class_Menu">
+        <div class="div_class_icon">
+          <i class="fas fa-atom fa-2x fa-spin"></i>
+        </div>
+        <div class="div_class_Menu_Right">
+          <a class="a" href="./햄스터vs토끼.jfif" target="_blank">Contact</a>
+        </div>
+        <div class="div_class_Menu_Right">
+          <a class="a" href="./햄스터vs토끼.jfif" target="_blank">Projects</a>
+        </div>
+        <div class="div_class_Menu_Right">
+          <a class="a" href="./햄스터vs토끼.jfif" target="_blank">About</a>
+        </div>
+        <div class="div_class_Menu_Right">
+          <a class="a" href="./햄스터vs토끼.jfif" target="_blank">Home</a>
+        </div>
+      </div>
+
+      <div class="Main">
+        안녕하세요. 제 이름은 <font class="red">안규원입니다.</font><br>저는 프론트엔드 개발자입니다.
+      </div>
+
+      <div class="Link">
+        View my work&nbsp;<i class="far fa-arrow-alt-circle-right"></i>
+
+      </div>
+    </div>
+    
+
+    
+    
+  </body>
+</html>

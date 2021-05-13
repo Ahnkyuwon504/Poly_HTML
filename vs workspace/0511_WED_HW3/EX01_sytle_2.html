@@ -1,0 +1,93 @@
+<!-- 
+    연습 1(오전).
+    Visual Studio Code v1.56.0
+    21.5.12. 
+    A반 kopo20 안규원
+ -->
+ <html>
+  <head>
+    <title>EX01_style2_오전</title>
+    <style>
+      /* div는 block...
+         span은 in-line...
+         none은 사라지고... 속성은 rule 없이 변경 가능하다...
+        */
+
+      /* div {
+        background-color: aqua; 
+        visibility: hidden; 
+        display: none;
+      } */
+
+      /* span {
+        background-color: blue;
+        display: block;
+      } */
+
+      /* margin은 바깥쪽 여백 */
+      #margin-test {
+        margin: 50px;
+        background-color: blueviolet;
+        display: inline;
+      }
+
+      /* padding은 안쪽 여백 */
+      #padding-test {
+        padding: 50px;
+        background-color: chartreuse;
+      }
+
+      .button {
+        border:  1px solid springgreen;
+        background-color: teal;
+        color: brown;
+        border-radius: 5px;
+        padding: 15px;
+      }
+
+      @media screen and (min-width:0px) and (max-width:500px) {
+        li {
+          display: block;
+        }
+      }
+
+      @media screen and (min-width:501px) {
+        li {
+          display: inline;
+        }
+      }
+
+      li {
+        display: inline;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    display: none으로 모든걸 무시하고 죽인다...
+   -->
+  <body>
+    <div>HEllo</div>
+    <span>hellO</span>
+
+    <div>visibility-hidden은 공간은 차지하되 보이지 않아..</div>
+    <div>display-none은 공간도 차지하지 않고 보이지도 않아..</div>
+    <div>display-block은 div 처럼 된다.....</div>
+
+    <div id="margin-test">
+      <p id="padding-test">Hello world</p>
+    </div>
+
+    <input class="button" type="button" value="와하하">
+
+    <div>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+        <li>JQuery</li>
+        <li>JSP</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!-- 
+    연습2(오후).
+    Visual Studio Code v1.56.0
+    21.5.11. 
+    A반 kopo20 안규원
+ -->
+ <html>
+  <head>
+    <title>exam02_style_sheet</title>
+    <!-- 두 번째 방법.. 내부 선언 방식.. style 정의해주고 시작..보기 편하다.. -->
+    <style>
+      div {
+        border: 1px;
+        border-style: solid;
+        color: yellow;
+      }
+
+      div:nth-child(3) {
+        border: 55px;
+        border-style: solid;
+      }
+
+      /* 
+        class는 .로 
+      */
+      .my_text {
+        color:pink
+      }
+
+      .main_page {
+        color:tomato;
+      }
+
+      .is_logged_out {
+        background-color: black;
+      }
+
+      .right-align {
+        text-align: right;
+      }
+
+      .underline {
+        text-decoration: overline underline;
+        text-transform: uppercase;
+      }
+
+      @font-face {
+        font-family: "My Font";
+        src: url("./NanumPenScript-Regular.ttf");
+      }
+
+      .my_font {
+        font-family:"My Font", sans-serif;
+      }
+
+      /* 
+        id는 #으로..
+       */
+      #my_id {
+        background-color: violet;
+      }
+
+      #container div {
+        background-color: cyan;
+      }
+    </style>
+
+    <!-- 세 번째 방법.. 따로 css 작성한 것임...  -->
+    <link rel="stylesheet" href="EX03_my_style.css">
+  </head>
+
+  <body>
+    <!-- 첫 번째 방법.. inline 방식 -->
+    <div style="border: 1px; border-style: groove;">
+      <h1>Hello world!</h1>
+    </div>
+
+    <!-- 두 번째 방법.. 내부 선언 방식 -->
+    <div>
+      <h1>Hello world!</h1>
+    </div>
+
+    <!-- 
+      두 번째 방법.. 내부 선언 방식에서 id, class까지 활용..
+      가장 말단에서 선언해놓은 놈으로 먹어...
+    -->
+    <div id="my_id" class="my_text">
+      <h1>안녕 세계</h1>
+    </div>
+    <!-- 
+      id는 unique 해야 한다... 자바스크립트로 조작할 때 쓸것이기 때문임...
+      class는 unique 안 해도 된다...
+     -->
+     <div id="my_id2">
+      <h1 class="main_page is_logged_out">안녕 세계</h1>
+    </div>
+
+    <div id="container">
+      <header>
+        헤더
+      </header>
+      <div>
+        섹션 1
+      </div>
+      <section>
+        섹션 2
+      </section>
+      <footer>
+        푸터
+      </footer>
+    </div>
+
+    <div class="right-align underline">
+      <span>
+        <h1>Box1</h1>
+      </span>
+    </div>
+
+    <div class="my_font">
+      <h1>다른 폰트이다!</h1>
+    </div>
+   
+
+
+  </body>
+</html>
