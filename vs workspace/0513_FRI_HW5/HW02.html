@@ -1,15 +1,17 @@
 <!-- 
-    HW01.
+    Hw02.
     Visual Studio Code v1.56.0
-    21.5.13. 
+    21.5.14. 
     A반 kopo20 안규원
  -->
-<html>
-
-<head>
-  <title>HW01</title>
-  <style>
-    .div_class_bgcolor_blue2 {
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>HW02</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <style>
+         .div_class_bgcolor_blue2 {
       position: absolute;
       left: 250px;
       top: 250px;
@@ -66,25 +68,26 @@
       z-index: 5;
       background-color: white;
     }
-  </style>
-  <script>
-    function getsquare() {
-      let outputText1 = document.getElementById('square');
-      var str = "";
+   </style>
+    <script>
+      $(function() {
+        var str = "";
 
-      str += '<div class="div_class_bgcolor_blue2">1</div>';
-      str += '<div class="div_class_bgcolor_green2">2</div>';
-      str += '<div class="div_class_bgcolor_purple2">3</div>';
-      str += '<div class="div_class_bgcolor_red2">4</div>';
-      str += '<div class="div_class_bg_image">';
-      str += '<img src="./햄스터vs토끼.jfif" width="200" height="300"style="float:left; margin:0; padding:0">';
-      str += '</div>';
-      outputText1.innerHTML = str;
-    }
-  </script>
-</head>
+        str += '<div class="div_class_bgcolor_blue2">1</div>';
+        str += '<div class="div_class_bgcolor_green2">2</div>';
+        str += '<div class="div_class_bgcolor_purple2">3</div>';
+        str += '<div class="div_class_bgcolor_red2">4</div>';
+        str += '<div class="div_class_bg_image">';
+        str += '<img src="./햄스터vs토끼.jfif" width="200" height="300"style="float:left; margin:0; padding:0">';
+        str += '</div>';
 
-<body id="square" onload="getsquare()">
-</body>
+        $('#body').append(str);
+      })
 
-</html>
+    </script>
+ </head>
+ 
+ <body id="body">
+   
+ </body>
+ </html>

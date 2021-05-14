@@ -1,0 +1,79 @@
+<!-- 
+    EX_Check_01.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>EX_Check_01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+    }
+  </style>
+  <script>
+    function test() {
+
+      if (!$('input:checkbox[name=checkAll]').is(':checked')) {
+        $('input:checkbox[name=check]').each(function () {
+          // $(this).prop('checked', true);
+          if (this.checked) {
+            this.checked = false;
+          } else if (!this.checked) {
+            this.checked = false;
+          }
+        })
+      } else if ($('input:checkbox[name=checkAll]').is(':checked')) {
+        $('input:checkbox[name=check]').each(function () {
+          // $(this).prop('checked', true);
+          if (this.checked) {
+            this.checked = true;
+          } else if (!this.checked) {
+            this.checked = true;
+          }
+        })
+      }
+    }
+
+    function showChecked() {
+      let result = document.getElementById('result');
+      var str = '';
+
+      if ($('input:checkbox[name=check]:checked').length == 0) {
+        alert('선택사항이 없습니다.')
+        result.innerHTML = str;
+      } else {
+        $('input:checkbox[name=check]').each(function (i, e) {
+          var num = i + 1;
+
+          if ($(this).is(':checked')) {
+            let title = document.getElementById(num).innerText;
+            str += '<div>';
+            str += title;
+            str += '</div>';
+          }
+        })
+
+        result.innerHTML = str;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <center>
+    
+  </center>
+</body>
+
+</html>

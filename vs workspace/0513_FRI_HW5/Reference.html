@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>EX02</title>
+</head>
+<style>
+  .default {
+    /* 
+    inline으로 같은줄 배치...
+    block으로 크기조절 가능...
+    순수 inline은 크기조절이 안됨...
+     */
+    display: inline-block;
+    border: 1px solid black;
+    color: white;
+    background-color: gray;
+    width: 200px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+</style>
+
+<body>
+  <center>
+    <div class="default">html</div>
+    <div class="default">css</div>
+    <div class="default">javascript</div>
+    <br>
+    <div class="default">html</div>
+    <div class="default">css</div>
+    <div class="default">javascript</div>
+    <br>
+    <div class="default">html</div>
+    <div class="default">css</div>
+    <div class="default">javascript</div>
+  </center>
+
+  <script>
+    var beforeChange = document.getElementsByClassName('default');
+    for (var i = 0; i < beforeChange.length; i++) {
+      beforeChange[i].addEventListener('mouseover', 
+        function() {
+          for (var j = 0; j < beforeChange.length; j++) {
+            beforeChange[j].style.color = 'white';
+            beforeChange[j].style.backgroundColor = 'gray';
+          }
+          this.style.color = 'black';
+          this.style.backgroundColor = 'white';
+        }
+      )
+    }
+  </script>
+</body>
+
+</html>

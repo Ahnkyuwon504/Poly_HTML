@@ -1,0 +1,204 @@
+<!-- 
+    EX01.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>EX01_jquery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // $(function () {
+    //   alert('로딩 끝');
+    //   $('#hello').hide();
+
+    //   }
+    // )
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    function show() {
+      $('#hello').show();
+    }
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    function hide() {
+      $('#hello').hide();
+    }
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    $(function () {
+      $('.hideButton').on(
+        'click', function() {
+          $('#hello').hide();
+      })
+      .mouseover(function() {
+        alert('안녕');
+      })
+    })
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    // jkjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+
+    $(function () {
+      $('#addButton').click(function() {
+        // val인데 메소드야.. return해줄거야
+        let text = $('#textField').val();
+        $('ul').append('<li>' + text + '</li>');
+        // 추가하고 비워주자
+        $('#textField').val('');
+      })
+
+
+      $('#htmlButton').click(function() {
+        $('#box').html('<h1>Hello World!</h1>');
+      })
+
+      $('#textButton').click(function() {
+        $('#box').text('<h1>Hello World!</h1>');
+      })
+
+      $('#hello').on('click', function() {
+        $(this).hide();
+      })
+    })
+
+    function test() {
+
+      if (!$('input:checkbox[name=checkAll]').is(':checked')) {
+        $('input:checkbox[name=check]').each(function () {
+          // $(this).prop('checked', true);
+          if (this.checked) {
+            this.checked = false;
+          } else if (!this.checked) {
+            this.checked = false;
+          }
+        })
+      } else if ($('input:checkbox[name=checkAll]').is(':checked')) {
+        $('input:checkbox[name=check]').each(function () {
+          // $(this).prop('checked', true);
+          if (this.checked) {
+            this.checked = true;
+          } else if (!this.checked) {
+            this.checked = true;
+          }
+        })
+      }
+
+      
+      
+
+    
+
+
+    }
+
+    function showChecked() {
+      let result = document.getElementById('result');
+      var str = '';
+
+      $('input:checkbox[name=check]').each(function (i, e) {
+        var num = i + 1;
+        
+        if ($(this).is(':checked')) {
+          let title = document.getElementById(num).innerText;
+          str += '<div>';
+          str += title;
+          str += '</div>';
+        }
+      })
+
+      result.innerHTML = str;
+    }
+
+  </script>
+  <!-- <script>
+    alert('jquery 없으면?')
+  </script> -->
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      border: 1px solid black;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <span id="hello">Hello World</span>
+  <input type="button" value="show" onclick="show()">
+  <input type="button" value="hide" onclick="hide()">
+  <input class="hideButton" type="button" value="hide_not_onclick">
+
+  <div>
+    <input id="htmlButton" type="button" value="html">
+    <input id="textButton" type="button" value="text">
+  </div>
+  <div id="box">
+
+  </div>
+
+  <div>
+    <input id="textField" type="text" value="">
+    <input id="addButton" type="button" value="추가">
+    <!-- table>tr*3>td*3 -->
+    <ul>
+      <li>로리롤랄</li>
+      <li>킹갓킹갓충무공</li>
+      <li>나는알파디앋</li>
+    </ul>
+  </div>
+
+
+  <form>
+    <table>
+      <tr>
+        <th><input type="checkbox" name="checkAll" id="" onclick="test()">확인</th>
+        <th>제목</th>
+        <th>글쓴시간</th>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="1">11112121</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="2">313131313</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="3">2121212</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="4">45454545</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="5">65656</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check" id=""></td>
+        <td id="6">7878797jk</td>
+        <td>21.05.14 15:46</td>
+      </tr>
+    </table>
+    <input type="button" value="show checked" onclick="showChecked()">
+    <div id="result">
+
+    </div>
+
+
+  </form>
+
+
+
+
+
+</body>
+</html>
