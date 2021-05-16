@@ -1,0 +1,99 @@
+<!-- 
+    Hw04.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>HW03</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		.grayBGwhiteText {
+			background-color: rgb(80, 77, 77);
+			color: white;
+		}
+
+		.whiteBGblackText {
+			background-color: white;
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			color: black;
+		}
+
+		.left {
+			float: left;
+		}
+	</style>
+	<script>
+		function grayToblack(number) {
+			var str = "";
+
+			if (number == 1) {
+				let button = document.getElementById('htmlid');
+				str += '<input id="html" class="whiteBGblackText" type="button" ';
+				str += 'value="html" onclick="blackTogray(1)">';
+				button.innerHTML = str;
+				blackTogray(2);
+				blackTogray(3);
+			} else if (number == 2) {
+				let button = document.getElementById('cssid');
+				str += '<input id="css" class="whiteBGblackText" type="button" ';
+				str += 'value="css" onclick="blackTogray(2)">';
+				button.innerHTML = str;
+				blackTogray(1);
+				blackTogray(3);
+			} else if (number == 3) {
+				let button = document.getElementById('javascriptid');
+				str += '<input id="javascript" class="whiteBGblackText" type="button" ';
+				str += 'value="javascript" onclick="blackTogray(3)">';
+				button.innerHTML = str;
+				blackTogray(1);
+				blackTogray(2);
+			}
+		}
+
+		function blackTogray(number) {
+			var str = "";
+
+			if (number == 1) {
+				let button = document.getElementById('htmlid');
+				str += '<input id="html" class="grayBGwhiteText" type="button" ';
+				str += 'value="html" onclick="grayToblack(1)">';
+				button.innerHTML = str;
+			} else if (number == 2) {
+				let button = document.getElementById('cssid');
+				str += '<input id="css" class="grayBGwhiteText" type="button" ';
+				str += 'value="css" onclick="grayToblack(2)">';
+				button.innerHTML = str;
+			} else if (number == 3) {
+				let button = document.getElementById('javascriptid');
+				str += '<input id="javascript" class="grayBGwhiteText" type="button" ';
+				str += 'value="javascript" onclick="grayToblack(3)">';
+				button.innerHTML = str;
+			}
+		}
+
+		$('#htmlid').click(grayToblack(1))
+		$('#cssid').click(grayToblack(2))
+		$('#htmlid').click(grayToblack(3))
+	</script>
+</head>
+
+<body>
+	<div id="htmlid" class="left">
+		<input id="html" class="grayBGwhiteText" type="button" value="html">
+	</div>
+	<div id="cssid" class="left">
+		<input id="css" class="grayBGwhiteText" type="button" value="css">
+	</div>
+	<div id="javascriptid" class="left">
+		<input id="javascript" class="grayBGwhiteText" type="button" value="javascript">
+	</div>
+</body>
+
+</html>
