@@ -32,23 +32,27 @@
 	<script>
 		function grayToblack(number) {
 			var str = "";
+			console.log(11111);
 
 			if (number == 1) {
-				let button = document.getElementById('htmlid');
+				console.log(22222);
+
+				let button = document.getElementById("htmlid");
+				console.log(button);
 				str += '<input id="html" class="whiteBGblackText" type="button" ';
 				str += 'value="html" onclick="blackTogray(1)">';
 				button.innerHTML = str;
 				blackTogray(2);
 				blackTogray(3);
 			} else if (number == 2) {
-				let button = document.getElementById('cssid');
+				let button = document.getElementById("cssid");
 				str += '<input id="css" class="whiteBGblackText" type="button" ';
 				str += 'value="css" onclick="blackTogray(2)">';
 				button.innerHTML = str;
 				blackTogray(1);
 				blackTogray(3);
 			} else if (number == 3) {
-				let button = document.getElementById('javascriptid');
+				let button = document.getElementById("javascriptid");
 				str += '<input id="javascript" class="whiteBGblackText" type="button" ';
 				str += 'value="javascript" onclick="blackTogray(3)">';
 				button.innerHTML = str;
@@ -61,26 +65,24 @@
 			var str = "";
 
 			if (number == 1) {
-				let button = document.getElementById('htmlid');
+				let button = document.getElementById("htmlid");
 				str += '<input id="html" class="grayBGwhiteText" type="button" ';
 				str += 'value="html" onclick="grayToblack(1)">';
 				button.innerHTML = str;
 			} else if (number == 2) {
-				let button = document.getElementById('cssid');
+				let button = document.getElementById("cssid");
 				str += '<input id="css" class="grayBGwhiteText" type="button" ';
 				str += 'value="css" onclick="grayToblack(2)">';
 				button.innerHTML = str;
 			} else if (number == 3) {
-				let button = document.getElementById('javascriptid');
+				let button = document.getElementById("javascriptid");
 				str += '<input id="javascript" class="grayBGwhiteText" type="button" ';
 				str += 'value="javascript" onclick="grayToblack(3)">';
 				button.innerHTML = str;
 			}
 		}
 
-		$('#htmlid').click(grayToblack(1))
-		$('#cssid').click(grayToblack(2))
-		$('#htmlid').click(grayToblack(3))
+	
 	</script>
 </head>
 
@@ -95,5 +97,10 @@
 		<input id="javascript" class="grayBGwhiteText" type="button" value="javascript">
 	</div>
 </body>
+<script>
+		$('#htmlid').click(grayToblack(1))
+		$('#cssid').click(grayToblack(2))
+		$('#htmlid').click(grayToblack(3))
+</script>
 
 </html>
