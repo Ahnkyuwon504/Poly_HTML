@@ -1,0 +1,232 @@
+<!-- 
+    EX_Check_01.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>EX_Check_01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function reset() {
+      $('input:text[name=email]').val('');
+      $('input:text[name=password]').val('');
+      $('input:radio[name=gender]').prop('checked', false);
+      $("select[name=jobs]").val('');
+      $('input:checkbox[name=check]').each(function () {
+        this.checked = false;
+      })
+  }
+
+    function register() {
+      if (getID() == true) {
+        if (getPW() == true) {
+          if (getGender() == true) {
+            if (getJob() == true) {
+              if (getHobby() == true) {
+                alert('회원가입 완료!');
+              } else {
+                alert('취미를 3개이상 선택해 주세요.');
+              }
+            } else {
+              alert('직업을 1개이상 선택해 주세요.');
+
+            }
+          } else {
+            alert('성별을 선택해 주세요.');
+
+          }
+        } else {
+          alert('패스워드를 다시 입력해 주세요.');
+
+        }
+      } else {
+        alert('아이디를 다시 입력해 주세요.');
+      }
+      
+      
+    }
+
+    function getID() {
+      var numHobby = false;
+      var email = document.getElementById("email").value;
+      var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+      if (exptext.test(email) == true) {
+        numHobby = true;
+      }
+
+      return numHobby;
+    }
+
+    function getPW() {
+      var numHobby = false;
+
+      if ($('input:text[name=password]').val().length >= 5) {
+        numHobby = true;
+      }
+
+      return numHobby;
+    }
+
+    function getGender() {
+      var numHobby = false;
+
+      if ($('input:radio[name=gender]:checked').length >= 1) {
+        numHobby = true;
+      }
+
+      return numHobby;
+    }
+
+    function getJob() {
+      var numHobby = false;
+
+      if ($("select[name=jobs]").val().length != 0) {
+        numHobby = true;
+      }
+
+      return numHobby;
+    }
+
+    function getHobby() {
+      var numHobby = false;
+
+      if ($('input:checkbox[name=check]:checked').length >= 3) {
+        numHobby = true;
+      }
+
+      return numHobby
+    }
+    // 모두 true여야 회원가입 완료
+  </script>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+    }
+
+    .oneLine {
+      height: 50px;
+    }
+
+    .type {
+      display: inline-block;
+      width: 100px;
+    }
+
+    .box {
+      display: inline-block;
+      width: 300px;
+    }
+
+    .halfbox {
+      display: inline-block;
+      width: 100px;
+    }
+
+    .hobbybox {
+      display: inline-block;
+      width: 70px;
+    }
+
+    .lastButton {
+      background-color: gray;
+      border: black solid 1px;
+      width: 120px;
+      margin-right: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 아이디 -->
+  <div class="oneLine">
+    <span class="type">아이디</span>
+    <!-- 아이디 입력칸 -->
+    <input class="box" id="email" name="email" type="text">
+  </div>
+
+  <!-- 비밀번호 -->
+  <div class="oneLine">
+    <span class="type">비밀번호</span>
+    <!-- 비밀번호 입력칸 -->
+    <input class="box" name="password" type="text">
+  </div>
+
+  <!-- 성별 -->
+  <div class="oneLine">
+    <span class="type">성별</span>
+    <!-- 남자 선택 -->
+    <input type="radio" name="gender" value="man">
+    <span class="halfbox">남자</span>
+    <!-- 여자 선택 -->
+    <input type="radio" name="gender" value="woman">
+    <span class="halfbox">여자</span>
+  </div>
+
+  <!-- 직업 -->
+  <div class="oneLine">
+    <span class="type">직업</span>
+    <!-- select -->
+    <label for="job-select"></label>
+    <select class="box" name="jobs" id="job-select">
+      <option value=""></option>
+      <option value="1">개발자</option>
+      <option value="2">게발자</option>
+      <option value="3">가발자</option>
+      <option value="4">거절자</option>
+      <option value="5">변절자</option>
+      <option value="6">오늘놀자</option>
+    </select>
+  </div>
+
+  <!-- 취미 -->
+  <div>
+    <!-- 첫 번째 줄 -->
+    <div class="oneLine">
+      <span class="type">취미</span>
+      <!-- 위쪽 체크박스 3개 -->
+      <div class="box">
+        <input type="checkbox" name="check">
+        <span class="hobbybox">개발</span>
+        <input type="checkbox" name="check">
+        <span class="hobbybox">게임감상</span>
+        <input type="checkbox" name="check">
+        <span class="hobbybox">낚시</span>
+      </div>
+    </div>
+    <!-- 두 번째 줄 -->
+    <div class="oneLine">
+      <!-- 취미 글씨 없어서 공백 넣어주는 span -->
+      <span class="type"></span>
+      <!-- 아래쪽 체크박스 3개 -->
+      <div class="box">
+        <input type="checkbox" name="check">
+        <span class="hobbybox">운동</span>
+        <input type="checkbox" name="check">
+        <span class="hobbybox">독서</span>
+        <input type="checkbox" name="check">
+        <span class="hobbybox">영화감상</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 취소, 회원가입 -->
+  <div class="oneLine">
+    <!-- 글씨 없어서 공백 넣어주는 span -->
+    <span class="type"></span>
+    <input class="lastButton" type="button" value="취소" onclick="reset();">
+    <input class="lastButton" type="button" value="회원가입" onclick="register();">
+  </div>
+</body>
+</html>

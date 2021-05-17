@@ -1,0 +1,50 @@
+<!-- 
+    Hw01.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HW01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function getText() {
+      let text = prompt('텍스트를 입력해 주세요.');
+
+      while (!text) {
+        text = prompt('다시 텍스트를 정확히 입력해 주세요.');
+      }
+
+      return text;
+    }
+
+    $(function() {
+      $('#printText').append('<h1 id="printedText">' + getText() + '</h1>');
+      $('#printText').append('<input id="redButton" type="button" value="빨강">');
+      $('#printText').append('<input id="blueButton" type="button" value="파랑">');
+      $('#printText').append('<input id="yellowButton" type="button" value="노랑">');
+
+      $('#redButton').click(function() {
+        $('#printText').css("color", "red");
+      })
+
+      $('#blueButton').click(function() {
+        $('#printText').css("color", "blue");
+      })
+
+      $('#yellowButton').click(function() {
+        $('#printText').css("color", "yellow");
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="printText">
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>EX03_random</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // window.addEventListener("keydown", function(event) {
+    //  console.log(event);
+    // })
+
+    // onload 해야함...!!!
+    let isAnimating = false;
+
+    function move(event) {
+      if (isAnimating) {
+        return;
+      }
+
+      let params = {};
+      if (event.code == 'ArrowUp') {
+        params = {
+          top: '-=100px'
+        }
+      } else if (event.code == 'ArrowRight') {
+        params = {
+          left: '+=100px'
+        }
+      } else if (event.code == 'ArrowDown') {
+        params = {
+          top: '+=100px'
+        }
+      } else if (event.code == 'ArrowLeft') {
+        params = {
+          left: '-=100px'
+        }
+      }
+
+      isAnimating = true;
+
+      $('#syuya').animate(params, function () {
+        isAnimating = false;
+      });
+    }
+
+    window.addEventListener('keydown', function (event) {
+      move(event);
+    });
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min); // 올림
+      max = Math.floor(max); // 내림
+      let result = Math.floor(Math.random() * (max - min)) + min;
+      console.log(result);
+      return result;
+    }
+
+  </script>
+  <style>
+    #box {
+      border: 1px solid black;
+      width: 500px;
+      height: 500px;
+    }
+
+    #syuya {
+      width: 500px;
+      position: absolute;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="box">
+    <img id="syuya" src="./슈야_givingheart.gif" alt="">
+  </div>
+  <div>
+    <button onclick="getRandomInt(0, 10)">랜덤 버튼</button>
+  </div>
+
+</body>
+
+</html>

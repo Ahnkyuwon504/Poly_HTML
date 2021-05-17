@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>EX02_pucca</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // window.addEventListener("keydown", function(event) {
+    //  console.log(event);
+    // })
+
+    // onload 해야함...!!!
+    let isAnimating = false;
+
+    function move(event) {
+      if (isAnimating) {
+          return;
+        }
+
+      let params = {};
+       if (event.code == 'ArrowUp') {
+        params = {
+          top: '-=100px'
+        }
+       } else if (event.code == 'ArrowRight') {
+        params = {
+          left: '+=100px'
+        }
+       } else if (event.code == 'ArrowDown') {
+        params = {
+          top: '+=100px'
+        }
+       } else if (event.code == 'ArrowLeft') {
+        params = {
+          left: '-=100px'
+        }
+       }
+
+
+
+        isAnimating = true;
+        $('#syuya').animate(params, function() {
+            isAnimating = false;
+          });
+    }
+
+
+
+    window.addEventListener('keydown', function (event) {
+      if (event.code == 'ArrowUp') {
+        $('#syuya').animate({
+            top: '-=50px'
+          });
+      } else if (event.code == 'ArrowRight') {
+
+        if (isAnimating) {
+          return;
+        }
+
+        isAnimating = true;
+        $('#syuya').animate({
+            left: '+=50px'
+          }, function() {
+            isAnimating = false;
+          });
+
+      } else if (event.code == 'ArrowDown') {
+        $('#syuya').animate({
+            top: '+=50px'
+          });
+      } else if (event.code == 'ArrowLeft') {
+        $('#syuya').animate({
+            left: '-=50px'
+          });
+      }
+    })
+
+    // window.addEventListener('keydown', (event) => move(event));
+    // 람다식임...
+
+    // window.addEventListener('keydown', function (event) {
+    //   move(event);
+    // });
+    // 최대로 줄인다면 이렇게... 위의 람다식과 비슷함...
+
+
+
+
+
+
+    // $(function () {
+    //   $('body').keydown(function (event) {
+    //     if (event.key == 'ArrowUp') {
+    //       $('#syuya').animate({
+    //         top: '-=20px'
+    //       },10);
+    //     } else if (event.key == 'ArrowDown') {
+    //       $('#syuya').animate({
+    //         top: '20px'
+    //       },10);
+    //     } else if (event.key == 'ArrowRight') {
+    //       $('#syuya').animate({
+    //         left: '20px'
+    //       },10);
+    //     } else if (event.key == 'ArrowLeft') {
+    //       $('#syuya').animate({
+    //         left: '-=20px'
+    //       },10);
+    //     }
+    //   })
+    // })
+  </script>
+  <style>
+    #box {
+      border: 1px solid black;
+      width: 500px;
+      height: 500px;
+    }
+
+    #syuya {
+      width: 500px;
+      position:absolute;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="box">
+    <img id="syuya" src="./슈야_givingheart.gif" alt="">
+
+  </div>
+
+</body>
+
+</html>

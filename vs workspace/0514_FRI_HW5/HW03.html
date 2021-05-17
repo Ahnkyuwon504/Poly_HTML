@@ -1,0 +1,89 @@
+<!-- 
+    Hw03.
+    Visual Studio Code v1.56.0
+    21.5.14. 
+    A반 kopo20 안규원
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>HW03</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <style>
+    #container {
+      width: 210px;
+    }
+    .top {
+      background-color: midnightblue;
+      color: white;
+      padding: 16px;
+    }
+    .contents {
+      background-color: gray;
+      color: black;
+      padding: 16px;
+    }
+    .box {
+      background-color: white;
+      padding: 8px;
+      margin: 8px;
+      width: 140px;
+      word-break: break-all;
+    }
+    .button {
+      background-color: gray;
+      margin-top: 8px;
+      width: 102px;
+      border: 1px solid black;
+    }
+  </style>
+   <script>
+     function getName() {
+       let name = prompt('이름을 입력해 주세요.');
+ 
+       while (!name) {
+         name = prompt('다시 이름을 정확히 입력해 주세요.');
+       }
+ 
+       return name;
+     }
+
+     function getArticle() {
+       let article = prompt('기사를 입력해 주세요.');
+ 
+       while (!article) {
+         article = prompt('다시 기사를 정확히 입력해 주세요.');
+       }
+ 
+       return article;
+     }
+ 
+     $(function() {
+       $('#wantToWrite').click(function() {
+         var str = '';
+         str += '<div class="box"><b>';
+         str += getName();
+         str += '</b> ';
+         str += getArticle();
+         str += '</div>';
+
+         $('#addContent').append(str);
+       })
+     })
+   </script>
+ </head>
+ 
+ <body>
+  <div id="container">
+    <div class="top">기사등록하기</div>
+    <div id="addContent" class="contents">
+      <div class="box"><b>박지성</b> SBS에서 월드컵보세요!</div>
+      <div class="box"><b>안정환</b> MBC죠...</div>
+      <div class="box"><b>이영표</b> KBS는 수신료의 가치를...</div>
+    </div>
+    <input id="wantToWrite" class="button" type="button" value="등록하기">
+  </div>
+   
+ </body>
+ </html>
