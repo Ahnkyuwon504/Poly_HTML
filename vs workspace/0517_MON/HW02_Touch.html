@@ -15,13 +15,13 @@
     #box {
       border: 1px solid black;
       width: 100%;
-      height: 500px;
+      height: 600px;
       position: absolute;
     }
 
     /* 주인공 스펙, 위치 */
     #syuya {
-      width: 100px;
+      width: 200px;
       left: 50px;
       top: 400px;
       position: relative;
@@ -29,7 +29,7 @@
 
     /* -100부터 시작해서.. 1000까지 */
     #enemySyuya {
-      width: 100px;
+      width: 200px;
       right: -100px;
       top: 400px;
       position: absolute;
@@ -48,7 +48,7 @@
       let params = {};
       if (event.code == 'Space') {
         params = {
-          top: '-=400px'
+          top: '-=600px'
         }
       } else {
         return;
@@ -58,7 +58,7 @@
 
       $('#syuya').animate(params, 500, function () {
       }).animate({
-        top: '+=400px'
+        top: '+=600px'
       }, 500, function () {
         isAnimating = false;
       });
@@ -75,9 +75,26 @@
     }, 3000);
 
 
+
+    // 충돌검사 무한 반복
     setInterval(function () {
       console.log(getCollision($('#enemySyuya'), $('#syuya')))
+      if (getCollision($('#enemySyuya'), $('#syuya'))) {
+        alert('슈야가 죽었어!')
+      }
     }, 100)
+
+    // 충돌 검사
+    function getCollision(enemy, player) {
+      //console.log('미사일의 x축' + enemy.offset().left)
+      //console.log('플레이어의 x축' + player.offset().left)
+      
+      // 객체의 x, y축은 좌상단 꼭지점이 기준
+      return enemy.offset().left < player.offset().left + player.width() &&
+      enemy.offset().left + enemy.width() > player.offset().left &&
+      enemy.offset().top < player.offset().top + player.height() &&
+      enemy.offset().top + enemy.height() > player.offset().top;
+    }
 
     // 미사일의 속성
     function enemySyuya(speed, position) {
@@ -111,13 +128,7 @@
       let result = Math.floor(Math.random() * (max - min)) + min;
       return result;
     }
-    // 충돌 검사
-    function getCollision(enemy, player) {
-      return enemy.offset().left < player.offset().left + player.offset().width &&
-      enemy.offset().left + enemy.offset().width > player.offset().left &&
-      enemy.offset().top < player.offset().top + player.offset().height &&
-      enemy.offset().top + enemy.offset().height > player.offset().top;
-    }
+    
 
   </script>
 
