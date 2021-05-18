@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HW02_Touch1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    /* 꼴보기 싫은 스크롤바 없애줌... */
+    body {
+      overflow: hidden;
+    }
+
+    /* 게임 화면 */
+    #box {
+      border: 1px solid black;
+      width: 100%;
+      height: 600px;
+      position: absolute;
+      background-image: url(./volcano.jpg);
+
+      background-size: 100% 100%;
+      animation : sliding 20s infinite;
+      animation-timing-function: linear;
+    }
+
+    #scorebox {
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      z-index: 1;
+      font-size: 30px;
+      color: white;
+    }
+
+    /* 주인공 스펙, 위치 */
+    #syuya {
+      width: 200px;
+      left: 50px;
+      top: 400px;
+      position: relative;
+    }
+
+     /* 장풍 스펙, 위치, hide로 시작... */
+     #jangpung {
+       width: 200px;
+       left: 100px;
+       top: 400px;
+       position: absolute;
+       z-index: 0;
+       display: none;
+     }
+
+    /* -100부터 시작해서.. 1000까지 */
+    #enemySyuya {
+      width: 200px;
+      right: -100px;
+      top: 400px;
+      position: absolute;
+    }
+  </style>
+  <script>
+    // 전역변수....
+    let isAnimating = false; // 연속입력 안되게
+    let jangpungAnimating = false; // 연속입력 안되게
+    let score = -100;
+
+    let collision = false; // 미사일 충돌여부
+    let jangpungcollision = false; // 장풍 충돌여부
+
+    let enemylife = true;
+    let jangpunglife = false;
+    ////////////////////////////////////////////////////////
+    // 점프점프
+    function jump(event) {
+      if (isAnimating) {
+        return;
+      }
+
+      let params = {};
+      if (event.code == 'Space') {
+        params = {
+          top: '-=600px'
+        }
+      } else {
+        return;
+      }
+
+      isAnimating = true;
+
+      $('#syuya').animate(params, 500, function () {
+      }).animate({
+        top: '+=600px'
+      }, 500, function () {
+        isAnimating = false;
+      });
+    }
+
+    ///////////////////////////////////////////////////////
+    // 장풍장풍
+    function launch(event) {
+      if (jangpungAnimating) {
+        return;
+      }
+
+      let params = {};
+      if (event.code == 'ArrowRight') {
+        params = {
+          left: '2000px'
+        }
+      }
+
+      jangpungAnimating = true;
+
+      $('#jangpung').animate(params, 500, function () {
+        $('#jangpung').hide();
+      }).animate({
+        left: '-=2000px'
+      }, 500, function () {
+        jangpungAnimating = false;
+      });
+
+    }
+
+    ///////////////////////////////////////////////////
+    // 점프발동.. 키보드 입력을 event로 먹여줌
+    window.addEventListener('keydown', function (event) {
+      if (event.code == 'Space') {
+        enemylife = true;
+        jump(event);
+      } else if (event.code == 'ArrowRight') {
+        $('#jangpung').show(10);
+        jangpunglife = true;
+        launch(event);
+        jangpunglife = false;
+      }
+    });
+
+    //////////////////////////////////////////////////////
+    // 장풍발동.. 키보드 입력을 event로 먹여줌
+    // 장풍은 안보이게 player 위치에 존재...
+    // 키보드 입력을 먹고 밖으로 빠진 후, 오른쪽으로 날아가서 
+    // 미사일과 맞으면 동시소멸, score +=200
+    // window.addEventListener('keydown', function (event) {
+    //   // 장풍 보이게 밖으로 빼주고
+    //   $('#jangpung').show(10);
+    //   // 발사
+    //   launch(event);
+    //   //$('#jangpung').hide(10);
+    // });
+
+    
+
+
+    // 점수 출력함수
+    function outputScore() {
+      $('#score').text(score);
+    }
+
+    ///////////////////////////////////////////////////////////
+    // 장풍과 미사일이 만나면 둘다 소멸시킴 무한 반복
+    setInterval(function() {
+      if (getCollision($('#enemySyuya'), $('#jangpung'))) {
+        $('#enemySyuya').hide();
+        $('#jangpung').hide();
+        jangpungcollision = true;
+        enemylife = false;
+      }
+    }, 10)
+
+    /////////////////////////////////////////////////////////////////
+    // 충돌검사 무한 반복
+    setInterval(function () {
+      if (getCollision($('#enemySyuya'), $('#syuya')) && collision == false) {
+        alert('슈야가 죽었어!')
+        collision = true;
+      }
+    }, 100)
+
+    ///////////////////////////////////////////////////////////
+    // 미사일 Interval로 무한 반복
+    setInterval(function () {
+      enemySyuya(getRandomInt(2500, 3000), getRandomInt(1300, 1700));
+
+      if (collision == true) {
+        collision = false;
+      } else if (collision == false && enemylife == true) {
+        score += 100;
+      }
+
+      if (jangpungcollision == true) {
+        score += 200;
+        jangpungcollision = false;
+      }
+      outputScore();
+    }, 3000);
+
+    /////////////////////////////////////////////////////////////////
+    // 미사일의 속성
+    function enemySyuya(speed, position) {
+      // 날리기 전에 다시 show
+      $('#enemySyuya').show(10);
+      // 미사일은 2000px 날아감...
+      $('#enemySyuya').animate({
+        left: '-=2000px'
+      }, speed, function () {
+        // 돌아오는건 랜덤..즉 시작위치는 랜덤
+        $('#enemySyuya').css({
+          left: position
+        })
+      })
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // 미사일 속도, 발사위치 리턴하는 Random함수
+    function getRandomInt(min, max) {
+      min = Math.ceil(min); // 올림
+      max = Math.floor(max); // 내림
+      let result = Math.floor(Math.random() * (max - min)) + min;
+      return result;
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // 충돌 검사
+    function getCollision(enemy, player) {
+      //console.log('미사일의 x축' + enemy.offset().left)
+      //console.log('플레이어의 x축' + player.offset().left)
+      
+      // 객체의 x, y축은 좌상단 꼭지점이 기준
+      return enemy.offset().left < player.offset().left + player.width() &&
+      enemy.offset().left + enemy.width() > player.offset().left &&
+      enemy.offset().top < player.offset().top + player.height() &&
+      enemy.offset().top + enemy.height() > player.offset().top;
+    }
+  </script>
+
+</head>
+
+<body>
+  <div id="box">
+    <div id="scorebox">
+      <center>
+        <span>점수 :&nbsp;</span>
+        <span id="score">0</span>
+      </center>
+    </div>
+    <img src="./슈야_ribbon.png" alt="" id="syuya">
+    <img src="./슈아_Dancing.png" alt="" id="jangpung">
+    <img src="./슈아_Dancing.png" alt="" id="enemySyuya">
+  </div>
+</body>
+
+</html>

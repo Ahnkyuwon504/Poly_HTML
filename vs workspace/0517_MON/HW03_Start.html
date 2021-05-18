@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HW03_Start</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    /* 꼴보기 싫은 스크롤바 없애줌... */
+    body {
+      overflow: hidden;
+    }
+
+    /* 게임 화면 */
+    #box {
+      border: 1px solid black;
+      width: 100%;
+      height: 1000px;
+      position: absolute;
+    }
+
+    #scorebox {
+      position: absolute;
+      top: 20%;
+      left: 45%;
+      width: 100%;
+      font-size: 30px;
+      color: black;
+    }
+
+    #button {
+      background-color: gray;
+      text-align: center;
+      position: absolute;
+      top: 70%;
+      left: 35%;
+      border: black 1px solid;
+      text-decoration: none;
+      width: 30%;
+      height: 100px;
+      line-height: 100px;
+    }
+
+    #button2 {
+      background-color: red;
+      text-align: center;
+      position: absolute;
+      top: 85%;
+      left: 35%;
+      border: black 1px solid;
+      text-decoration: none;
+      width: 30%;
+      height: 100px;
+      line-height: 100px;
+    }
+
+    #icon {
+      position: relative;
+      right: 5%
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="scorebox">
+      <div>javascript syuya</div>
+      <div>개발자 : 안규원</div>
+      <img id="icon" src="./슈야_givingheart.gif" alt="">
+    </div>
+      
+    <div>
+      <a id="button" href="./HW01_Touch1.html">게임시작</a>
+    </div>
+  </div>
+</body>
+
+</html>
