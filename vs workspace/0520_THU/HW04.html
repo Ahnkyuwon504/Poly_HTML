@@ -1,0 +1,93 @@
+<!-- 
+    Hw04.
+    Visual Studio Code v1.56.0
+    21.5.20. 
+    A반 kopo20 안규원
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>HW04</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <style>
+     .button {
+       border: black 1px solid;
+     }
+
+   </style>
+   <script>
+    function loadGet() {
+      $.get('https://jsonplaceholder.typicode.com/posts', 
+      function(data, status) {
+        for (var i = 0; i < data.length; i++) {
+          var str1 = '<div><button class="button" id="button' + i + 
+            '\" onclick="getComment(' + i + ')">' +
+            data[i].title + i + '</button></div>';
+          $('#here').append(str1);
+          console.log(i);
+          console.log(str1)
+        }
+
+        // for (var i = 0; i < data.length; i++) {
+        //   $('#box2').append('<h1>' + data[i].title + '</h1>');
+        // }
+        
+        
+      });
+    }
+
+    function getComment(integer) {
+      $.get('https://jsonplaceholder.typicode.com/comments', 
+      function(data, status) {
+        var i = integer + 1;
+        var str = '<h1>';
+        var cnt = 0;
+        var buttonid = '#button' + i;
+
+        for (var m = 0; m < data.length; m++) {
+          if (i == data[m].postId) {
+            str += data[m].body;
+          }
+        }
+
+        str += '</h1>';
+        $(buttonid).append(str);
+        // while (data.length-- > 0) {
+        //   var buttonid = '#button' + i;
+        //   var str = '';
+        //   str += '<div>';
+
+        //   for (var m = 0; m < data.length; m++) {
+        //     if (i == data[m].postId) {
+        //       str += data[m].body;
+        //       cnt++;
+        //     }
+        //   }
+        //   str += '</div>';
+        //   //console.log(buttonid);
+        //   $(buttonid).append(str);
+        //   i++;
+          
+        // }
+        // console.log(cnt);
+
+        // for (var i = 0; i < data.length; i++) {
+        //   $('#box2').append('<h1>' + data[i].title + '</h1>');
+        // }
+        
+        
+      });
+
+    }
+   </script>
+ </head>
+ 
+ <body>
+   <button onclick="loadGet()">데이터 로드</button>
+   <div id="here">
+     <button class="button" onclick="">아하하</button>
+   </div>
+   
+ </body>
+ </html>

@@ -1,0 +1,41 @@
+<!-- 
+    Hw03.
+    Visual Studio Code v1.56.0
+    21.5.20. 
+    A반 kopo20 안규원
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>HW03</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script>
+    function loadGet() {
+      $.get('https://jsonplaceholder.typicode.com/todos/', 
+      function(data, status) {
+        var i = 0;
+        while (data.length-- > 0) {
+          
+          $('#here').append('<h1>' + data[i].title + i + '</h1>');
+          i++;
+        }
+
+        // for (var i = 0; i < data.length; i++) {
+        //   $('#box2').append('<h1>' + data[i].title + '</h1>');
+        // }
+        
+        
+      });
+    }
+   </script>
+ </head>
+ 
+ <body>
+   <button onclick="loadGet()">데이터 로드</button>
+   <ul id="here">
+    <li>여기</li>
+  </ul>
+   
+ </body>
+ </html>

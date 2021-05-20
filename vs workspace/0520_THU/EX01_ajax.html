@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // 이게 한 세트... 그냥 이거 쓰면 됨...
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          // 여기만 바꾸면 됨...
+          document.getElementById('box').innerHTML = 
+          this.responseText;
+        }
+      }
+      // 이런 파일이 있으면 열겠다...
+      xhttp.open('get', 'https://jsonplaceholder.typicode.com/posts/1', true);
+      xhttp.send();
+    }
+
+    // 두 번째 방법.. 간편하긴 함
+    function loadDocJQuery() {
+      $('#box').load('https://jsonplaceholder.typicode.com/posts/2', 
+      function(response, status, xhr) {
+        // String을 JSON 형태로 변환
+        let jsonObj = JSON.parse(response);
+        // JSON  형태이므로 .title 먹음...
+        console.log(jsonObj.title);
+        console.log(response);
+        console.log(status);
+        console.log(xhr);
+      });
+    }
+
+    function loadGet() {
+      $.get('https://jsonplaceholder.typicode.com/posts', 
+      function(data, status) {
+        console.log(data);
+        console.log(status);
+        console.log(data.title);
+
+        $('#box2').text(data.body);
+        $('#box2').html('<h1>' + data.body + '</h1>');
+
+        var i = 0;
+        while (data.length-- > 0) {
+          
+          $('#box2').append('<h1>' + data[i].title + i + '</h1>');
+          i++;
+        }
+
+        // for (var i = 0; i < data.length; i++) {
+        //   $('#box2').append('<h1>' + data[i].title + '</h1>');
+        // }
+        
+        
+      });
+    }
+  </script>
+</head>
+<body>
+  <button id="button1" onclick="loadDocJQuery()">요청</button>
+
+  <div id="box">
+
+  </div>
+  <button id="button2" onclick="loadGet()">jQuery get</button>
+
+  <div id="box2">
+
+  </div>
+</body>
+</html>

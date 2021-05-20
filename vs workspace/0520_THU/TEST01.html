@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TEST01</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    #ground {
+      border: black 1px solid;
+      width: 100%;
+      text-align: center;
+    }
+
+    #buttonline {
+      margin: 10px;
+    }
+
+    .button {
+      border: blue 1px solid;
+      display: none;
+    }
+
+    #image {
+      margin: 50px;
+    }
+  </style>
+
+  <script>
+    var firstImage;
+    var rotatenum = 0;
+
+    function setThumbnail(event) {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        var img = document.createElement('img');
+
+        img.setAttribute('src', event.target.result);
+        firstImage = img;
+        document.querySelector('div#image').innerHTML = "";
+        document.querySelector('div#image').appendChild(img);
+
+        img.onerror = function () {
+          alert('이미지가 아닙니다')
+        }
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+      $('.button').css('display', 'inline');
+    }
+
+    function gray() {
+      $('#image').css('filter', 'grayscale(50%)');
+    }
+
+    function darker() {
+      $('#image').css('filter', 'blur(5px)');
+    }
+
+    function shadow() {
+      $('img').css('box-shadow', '5px 5px 5px black');
+    }
+
+    function opacity() {
+      $('#image').css('opacity', '50%');
+    }
+
+    function getleft() {
+      console.log('왼쪽 클릭' + rotatenum);
+      if (rotatenum % 4 == 0) {
+        $('#image').css('transform', 'rotate(270deg)');
+      }
+      else if (rotatenum % 4 == 1) {
+        $('#image').css('transform', 'rotate(360deg)');
+      }
+      else if (rotatenum % 4 == 2) {
+        $('#image').css('transform', 'rotate(90deg)');
+      }
+      else if (rotatenum % 4 == 3) {
+        $('#image').css('transform', 'rotate(180deg)');
+      }
+
+      rotatenum--;
+      console.log('바꾼 후 num' + rotatenum)
+    }
+
+    function getright() {
+      console.log('오른쪽 클릭' + rotatenum)
+      if (rotatenum % 4 == 0) {
+        $('#image').css('transform', 'rotate(90deg)');
+      }
+      else if (rotatenum % 4 == 1) {
+        $('#image').css('transform', 'rotate(180deg)');
+      }
+      else if (rotatenum % 4 == 2) {
+        $('#image').css('transform', 'rotate(270deg)');
+      }
+      else if (rotatenum % 4 == 3) {
+        $('#image').css('transform', 'rotate(360deg)');
+      }
+
+      rotatenum++;
+      console.log('바꾼 후 num' + rotatenum)
+
+    }
+
+    function getinitial() {
+      $('#image').css('filter', '');
+      $('img').css('box-shadow', '');
+      $('#image').css('opacity', '');
+      $('#image').css('transform', '');
+      rotatenum = 0;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="ground">
+    <div id="image">
+    </div>
+    <form action="">
+      <input type="file" name="fileupload" accept="image/*" onchange="setThumbnail(event)">
+    </form>
+  </div>
+  <div id="buttonline">
+    <button type="button" class="button" onclick="gray()">회색으로</button>
+    <button class="button" onclick="darker()">흐리게</button>
+    <button class="button" onclick="shadow()">그림자</button>
+    <button class="button" onclick="opacity()">50% 투명</button>
+  </div>
+  <div id="buttonline">
+    <button class="button" onclick="getleft()">좌로 90도 회전</button>
+    <button class="button" onclick="getright()">우로 90도 회전</button>
+    <button class="button" onclick="getinitial()">이미지 초기화</button>
+  </div>
+</body>
+
+</html>
